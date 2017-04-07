@@ -4,6 +4,13 @@
 		<form method='post', action='/users/logout'>
 			<input type='submit' value='Выйти'/>
 		</form>
+		<% if (categories) { %>
+			<ul>
+  				<% categories.forEach(function(category){ %>
+    			<li><%= category.title %></li>
+  				<% }); %>
+			</ul>
+		<% } %>
 	<% } else { %>
 		<h1>Регистрация</h1>
 		<form method='post', action='/users'>
