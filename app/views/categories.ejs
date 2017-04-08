@@ -1,0 +1,22 @@
+
+<nav class="col-xs-3 col-md-3 hidden-xs-down bg-faded sidebar">
+  <div class="row">
+    <div class="col-sm-7">
+      <p class="header">Категории</p>
+    </div>
+    <div class="col-sm-3">
+      <button type="button" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"/>Добавить</button>
+    </div>
+  </div>
+  <% if (categories) { %>
+    <ul class="nav navbar-text navbar-overflow navbar-scrollable">
+      <% categories.forEach(function(category){ %>
+      <li class="nav-item">
+        <a class="nav-link avtohover-delete" href="/category/<%= category.id %>"><%= category.title %>
+          <button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button>
+        </a>
+      </li>
+      <% }); %>
+    </ul>
+  <% } %>
+</nav>

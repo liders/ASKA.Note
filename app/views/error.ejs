@@ -1,7 +1,12 @@
-<% include header %>
+<%# console.log( message) %>
+<%# console.log(error.status) %>
+<%# console.log(error.stack) %>
 
-  <%- message %>
-  <%- error.status %>
-  <%- error.stack %>
-  
+<% include header %>
+<div class="col-sm-offset-4 col-sm-4 container top-buffer">
+  <h2 class="form-signin-heading">Произошла ошибка</h2>
+  <%#- message %>
+  <%#- error.status %>
+  <%#- error.stack %>
+</div>
 <% include footer %>

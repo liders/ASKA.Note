@@ -1,12 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title><%- title %></title>
-  <link rel="stylesheet" href="/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!--<link rel="icon" href="favicon.ico">-->
+
+  <title>Dashboard Template for Bootstrap</title>
+  <!-- Bootstrap core CSS -->
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/index.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <style>
+      .navbar-scrollable {
+        height: auto;
+        max-height: 500px;
+        overflow-x: hidden;
+      }
+      .navbar-overflow {
+        word-wrap: break-word;
+        word-break: break-all;  /* не поддерживает Opera12.14, значение keep-all не поддерживается IE, Chrome */
+        hyphens: manual;  /* значение auto не поддерживается Chrome */
+      }
+      .avtohover-delete > button{
+        visibility: hidden;
+      }
+      .avtohover-delete:hover > button{
+        visibility: visible;
+      }
+      .header {
+        font-size: 24px;
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.1;
+        color: inherit;
+      }
+  </style>
   <% if (ENV_DEVELOPMENT) { %>
     <script src="http://localhost:35729/livereload.js"></script>
   <% } %>
 </head>
 <body>
+  <nav class="navbar navbar-inverse">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- Бренд или логотип фирмы (обычно содержит ссылку на главную страницу) -->
+      <a href="#" class="navbar-brand">Aska.Notes</a>
+    </div>
+    <!-- Содержимое меню (коллекция навигационных ссылок, формы и др.) -->
+    <div class="collapse navbar-collapse" id="main-menu" >
+      <!-- Список ссылок, расположенных слева -->
+      <ul class="nav navbar-nav">
+        <!--Элемент с классом active отображает ссылку подсвеченной -->
+        <li class="active"><a href="/">Главная <span class="sr-only">(current)</span></a></li>
+        <li><a href="/">Контакты</a></li>
+        <li><a href="http://upyachka.ru/">О проекте</a></li>
+      </ul>
+      <!-- Список ссылок, расположенный справа -->
+      <% if (user) { %>
+          <form action="/users/logout/" method="post">
+            <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" onclick="$.post('/users/logout/')">Выйти из системы</a></li>
+            </ul>
+          </form>
+      <% } else { %>
+        <form class="navbar-form navbar-right" action='/users/login' method="post">
+          <div class="form-group">
+            <input type="text" placeholder="Логин" name='login' class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Пароль" name='password' class="form-control">
+          </div>
+          <button type="submit" class="btn btn-success">Войти</button>
+        </form>
+      <% } %>
+    </div>
+  </nav>

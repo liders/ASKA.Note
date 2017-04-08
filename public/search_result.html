@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+  </head>
+  <style>
+	.navbar-scrollable {
+		height: auto;
+		max-height: 500px;
+		overflow-x: hidden;
+	}
+	.navbar-overflow {
+		word-wrap: break-word;
+		word-break: break-all;  /* не поддерживает Opera12.14, значение keep-all не поддерживается IE, Chrome */ 
+		hyphens: manual;  /* значение auto не поддерживается Chrome */ 
+	}
+	.avtohover-delete > button{
+		visibility: hidden; 
+	}
+	.avtohover-delete:hover > button{
+		visibility: visible;
+	}
+	.header {
+		font-size: 24px;
+		font-family: inherit;
+		font-weight: 500;
+		line-height: 1.1;
+		color: inherit;
+	}
+  </style>
+
+  <body>
+	<!--
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" data-replace-tmp-key="7adea0d9c77aabccd8bb67ae0a832d59"><os-p key="7adea0d9c77aabccd8bb67ae0a832d59">Project name</os-p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input type="text" placeholder="Эл. почта" class="form-control" data-translatable-string="Email">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Пароль" class="form-control" data-translatable-string="Password">
+            </div>
+            <button type="submit" class="btn btn-success" data-replace-tmp-key="b6d4223e60986fa4c9af77ee5f7149c5"><os-p key="b6d4223e60986fa4c9af77ee5f7149c5">Войти</os-p></button>
+          </form>
+        </div>
+      </div>
+    </div>-->
+	<nav class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+    <!-- Бренд или логотип фирмы (обычно содержит ссылку на главную страницу) -->
+			<a href="#" class="navbar-brand">Aska.Notes</a>
+		</div>
+  <!-- Содержимое меню (коллекция навигационных ссылок, формы и др.) -->
+		<div class="collapse navbar-collapse" id="main-menu" >
+      <!-- Список ссылок, расположенных слева -->
+		<ul class="nav navbar-nav">
+		  <!--Элемент с классом active отображает ссылку подсвеченной -->
+		  <li class="active"><a href="#">Главная <span class="sr-only">(current)</span></a></li>
+		  <li><a href="#">Контакты</a></li>
+		  <li><a href="http://upyachka.ru/">О проекте</a></li>
+		</ul>
+      <!-- Список ссылок, расположенный справа -->
+		<ul class="nav navbar-nav navbar-right">
+		  <li><a href="#">Войти</a></li>
+		</ul>
+	  </div>
+	</nav>
+	
+	<!--
+	<div class="jumbotron">
+      <div class="container">
+        <h1 data-replace-tmp-key="6cd3556deb0da54bca060b4c39479839"><os-p key="6cd3556deb0da54bca060b4c39479839">Привет, мир!</os-p></h1>
+        <p data-replace-tmp-key="75ef47b498a2f87541207e46019b323e"><os-p key="75ef47b498a2f87541207e46019b323e">This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</os-p></p>
+        <p><a class="btn btn-primary btn-lg" role="button" data-replace-tmp-key="0fc1f806e4591946e53b4dd0f08a50a0"><os-p key="0fc1f806e4591946e53b4dd0f08a50a0">Learn more &raquo;</os-p></a></p>
+      </div>
+    </div>-->
+	
+    <div class="container top-buffer">
+      <div class="row">
+        <nav class="col-xs-3 col-md-3 hidden-xs-down bg-faded sidebar">
+			<div class="row">
+				<div class="col-sm-7">
+					<p class="header">Категории</p>
+				</div>
+				<div class="col-sm-3">
+					<button type="button" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus">Добавить</button>
+				</div>
+			</div>
+          <ul class="nav navbar-text navbar-overflow navbar-scrollable">
+            <li class="nav-item">
+              <a class="nav-link active avtohover-delete" href="#">Overview <span class="sr-only">(current)</span>
+			  <button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button>
+			  </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Reports</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Analytics</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link avtohover-delete" href="#">Exssssssssssssssssssssssssssssssss
+			  <button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button>
+			  </a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link avtohover-delete" href="#">Exssssssssssssssssssssssssssssssss
+			  <button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button>
+			  </a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link avtohover-delete" href="#">Exssssssssssssssssssssssssssssssss
+			  <button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button>
+			  </a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link avtohover-delete" href="#">Exssssssssssssssssssssssssssssssss
+			  <button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button>
+			  </a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link avtohover-delete" href="#">Exssssssssssssssssssssssssssssssss
+			  <button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button>
+			  </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Export</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Nav item</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Nav item again</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">One more nav</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Another nav item</a>
+            </li>
+          </ul>
+        </nav>
+
+        <main class="col-sm-9 offset-sm-3 col-md-9 offset-md-2 pt-3">
+		  <!--
+          <h1>Dashboard</h1>
+			
+          <section class="row text-center placeholders">
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <div class="text-muted">Something else</div>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+          </section>-->
+		  <!--
+		  <section class="row">
+			  <div class="col-6 col-sm-10 placeholder pull-left"><h1>Заметки</h1></div>
+			  <div class="col-6 col-sm-2 placeholder">
+				<button type="button" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-plus">Добавить</button>
+			  </div>
+		  </section>
+          <nav class="hidden-xs-down bg-faded sidebar">
+          <ul class="nav navbar-text navbar-overflow navbar-scrollable">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Reports</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Analytics</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link avtohover-delete" href="#">Exssssssssssssssssssssssssssssssss
+			  <button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button>
+			  </a>
+            </li>
+            </li>
+          </ul>
+        </nav>-->
+
+		<div class="row">
+				<div class="col-sm-10">
+					<p class="header">Результаты поиска: найдено N заметок</p>
+				</div>
+		</div>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Тема</th>
+                  <th>Тэги</th>
+				  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Loremffffffffffffffffffffffffffffffffffffff</td>
+                  <td>dolor молоко грибы</td>
+				  <td class="avtohover-delete"><button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button></td>
+                </tr>
+                <tr>
+                  <td>amet</td>
+                  <td>adipiscing</td>
+				  <td class="avtohover-delete"><button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button></td>
+                </tr>
+                <tr>
+                  <td>Integer</td>
+                  <td>odio</td>
+				  <td class="avtohover-delete"><button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+		<div class="text-center">
+			<ul class="pagination text-center">
+				<li class="disabled"><span>«</span></li>
+				<li class="active"><span>1</span></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">»</a></li>
+			</ul>
+		</div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="bootstrap/jquery-3.2.0.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
