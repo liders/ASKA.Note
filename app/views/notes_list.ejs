@@ -1,0 +1,32 @@
+<main class="col-sm-9 offset-sm-3 col-md-9 offset-md-2 pt-3">
+  <div class="row">
+    <div class="col-sm-10">
+      <p class="header">Заметки</p>
+    </div>
+    <div class="col-sm-2">
+      <button type="button"  class="btn btn-xs btn-success" data-toggle="modal" data-target="#addNoteModal"><span class="glyphicon glyphicon-plus"/>Добавить</button>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Тема</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if(notes) {%>
+        <% notes.forEach(function(note){ %>
+          <tr>
+          <td>
+            <a class="nav-link" href="/note/<%= note.id %>"><%= note.title %></a>
+          </td>
+          <td class="avtohover-delete"><button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button></td>
+          </tr>
+        <% }) %>
+      <% } %>
+      </tbody>
+    </table>
+  </div>
+</main>

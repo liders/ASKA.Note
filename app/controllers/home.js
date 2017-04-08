@@ -1,7 +1,7 @@
 var express = require('express'),
   router = express.Router(),
-  mongoose = require('mongoose');
-  category_api = require('../utils/category.js')
+  mongoose = require('mongoose'),
+  category_api = require('../utils/category.js');
 
 module.exports = function (app) {
   app.use('/', router);
@@ -12,7 +12,8 @@ router.get('/', function(req, res, next) {
   var data = {
     title: 'ASKA Notes',
     user : null,
-    categories: []
+    categories: [],
+    current_category_id: null
   }
   if (req.session.user) {
     console.log('KEK1111111')
@@ -23,6 +24,7 @@ router.get('/', function(req, res, next) {
           console.log(categories[0]._id)
           console.log(categories[0])
           data.categories = categories[0]._id;
+          data.current_category_id = categories[0]._id
           console.log(data.categories)
           res.redirect('/category/' + data.categories);
           res.end();

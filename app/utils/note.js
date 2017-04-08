@@ -4,11 +4,11 @@ var mongoose = require('mongoose'),
 
 
 exports.createNote = function(noteData, userId){
+  console.log(noteData)
  	var note = {
   		title: noteData.title,
   		user_id: userId,
-  		category_id: noteData.category_id,
-  		description: noteData.description
+  		category_id: noteData.category_id
   };
   return new Note(note).save();
 }
@@ -19,12 +19,10 @@ exports.getNotesByCategory = function(userId, categoryId) {
     "category_id": categoryId});
 }
 
-exports.getNote = function(userId, noteId) {
-  return Note.findOne({
-    "_id": noteId,
-    "user_id": userId});
-}
-
 exports.deleteNode = function(userId, nodeId) {
   return Note.remove({"_id": nodeId, "user_id": userId});
+};
+
+exports.getNote = function(noteId) {
+  return Note.find({"_id": noteId});
 };

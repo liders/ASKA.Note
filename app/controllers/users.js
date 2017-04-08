@@ -1,11 +1,10 @@
 var express = require('express'),
   router = express.Router(),
-  mongoose = require('mongoose');
-  user_api = require('../utils/user.js')
+  mongoose = require('mongoose'),
+  user_api = require('../utils/user.js');
 
 module.exports = function (app) {
   app.use('/users', router);
-  console.log('USE ROUTERS')
 };
 
 router.post('/login', function(req, res, next) {
@@ -14,10 +13,11 @@ router.post('/login', function(req, res, next) {
   user_api.checkUser(req.body)
     .then(function(user){
       if(user){
+        console.log('USE LOGIN!!!!!!!!')
         req.session.user = {id: user._id, login: user.login}
         res.redirect('/')
         } else {
-          return next(null)
+          return next(error)
       }
     })
     .catch(function(error){

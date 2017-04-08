@@ -1,7 +1,8 @@
 var express = require('express'),
   router = express.Router(),
-  mongoose = require('mongoose');
-  note_api = require('../utils/category.js') 
+  mongoose = require('mongoose'),
+  category_api = require('../utils/category.js'),
+  note_api = require('../utils/note.js');
 
 module.exports = function (app) {
   app.use('/note', router);
@@ -10,17 +11,29 @@ module.exports = function (app) {
 
 router.get('/:id', function(req, res, next) {
   if (!req.session.user) return res.redirect('/')
-  note_api.getNote(req.params.id)
-    .then(function(note){
-      if(note){
-        return res.status(200).send(note)
-      } else {
-        return next(error)
-      }
-    })
-    .catch(function(error){
-      return next(error)
-    })
+  var data = {
+    title: 'ASKA Notes',
+    user : req.session.user,
+    categories: [],
+    notes: [],
+    current_category_id: null
+  };
+  category_api.getCategories(req.session.user.id)
+      .then(function(categories){
+        if(categories){
+          data.categories = categories
+          console.log(req.params.id)
+          note_api.getNote(req.params.id)
+            .then(function(note){
+              if (note)
+                data.notes = note
+              res.render('note', data);
+            })
+            .catch(function(error){
+              return next(error)
+            })
+        };
+      })
 });
 
 
@@ -44,10 +57,12 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   if (!req.session.user) return res.redirect('/')
-  category_api.createNote(req.body, req.session.user.id)
+  note_api.createNote(req.body, req.session.user.id)
     .then(function(result){
       console.log("Note created")
-      return res.status(200).send("OK")
+      console.log(req.body)
+      res.redirect('/category/' + req.body.category_id);
+      //res.end();
     })
     .catch(function(err){
       res.status(500).send("Error")

@@ -32,9 +32,9 @@ router.get('/:id', function(req, res, next){
     title: 'ASKA Notes',
     user : req.session.user,
     categories: [],
-    notes: []
+    notes: [],
+    current_category_id: req.params.id
   };
-  console.log("category:" + req.params.id)
   category_api.getCategories(req.session.user.id)
       .then(function(categories){
         if(categories){
