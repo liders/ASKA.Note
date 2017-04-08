@@ -11,17 +11,18 @@ module.exports = function (app) {
 router.get('/', function(req, res, next) {
   var data = {
     title: 'ASKA Notes',
-    user : req.session.user,
+    user : null,
     categories: []
   }
   if (req.session.user) {
+    data.user = req.session.user
     category_api.getCategories(req.session.user.id)
       .then(function(categories){
-       if(categories)
-          data.categories = categories
-        res.render('index', data);
+        if(categories){
+          data.categories = categories[0]
+          res.redirect('/category/' + categories[0]._id)
+        }
       })
-  } else {
-    res.render('index', data);
   }
+  res.render('index', data);
 });
