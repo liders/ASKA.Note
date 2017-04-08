@@ -15,6 +15,7 @@ router.get('/', function(req, res, next) {
     categories: []
   }
   if (req.session.user) {
+    console.log('KEK1111111')
     data.user = req.session.user
     category_api.getCategories(req.session.user.id)
       .then(function(categories){
@@ -28,7 +29,11 @@ router.get('/', function(req, res, next) {
         }
       })
   }
-  if (!data.categories) {
+  else {
+    console.log('KEK1112111')
     res.render('index', data);
   }
+  //else if (!data.categories) {
+  //  res.render('index', data);
+  //}
 });

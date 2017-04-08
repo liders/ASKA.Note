@@ -5,16 +5,16 @@
       <p class="header">Категории</p>
     </div>
     <div class="col-sm-3">
-      <button type="button" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"/>Добавить</button>
+      <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#addCategoryModal"><span class="glyphicon glyphicon-plus"/>Добавить</button>
     </div>
   </div>
   <% if (categories) { %>
     <ul class="nav navbar-text navbar-overflow navbar-scrollable">
       <% categories.forEach(function(category){ %>
-      <li class="nav-item">
-        <a class="nav-link avtohover-delete" href="/category/<%= category.id %>"><%= category.title %>
-          <button type="button" class="btn pull-right glyphicon glyphicon-remove btn-xs"></button>
-        </a>
+      <li class="nav-item avtohover-delete">
+        <a class="nav-link" id="category_<%=category.id%>" href="/category/<%= category.id %>"><%= category.title %></a>
+        <button type="button"
+                class="btn pull-right glyphicon glyphicon-remove btn-xs delete-btn"></button>
       </li>
       <% }); %>
     </ul>

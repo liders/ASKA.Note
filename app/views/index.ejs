@@ -30,9 +30,13 @@
 
 <%- include header %>
   <% if (user) { %>
-    <%- include categories %>
-    <%- include notes %>
+  <div class="container top-buffer">
+    <div class="row">
+      <%- include categories %>
+      <%- include notes %>
+    </div>
+  </div>
 <% } else { %>
-  <%- include checkin%>
+  <% include checkin%>
 <% } %>
 <%- include footer %>

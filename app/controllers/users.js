@@ -17,11 +17,11 @@ router.post('/login', function(req, res, next) {
         req.session.user = {id: user._id, login: user.login}
         res.redirect('/')
         } else {
-        error_process(res, error)
+          return next(null)
       }
     })
     .catch(function(error){
-      error_process(res, error)
+      return next(error)
     })
 
 });

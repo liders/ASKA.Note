@@ -9,9 +9,14 @@ exports.createCategory = function(categoryData, userId){
   		user_id: userId,
   };
   return new Category(category).save();
+
 }
 
 exports.getCategories = function(userId) {
   return Category.find({"user_id": userId});
+};
+
+exports.deleteCategory = function(caltegoryId, userId) {
+  return Category.remove({"_id": caltegoryId, "user_id": userId})
 };
 

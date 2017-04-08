@@ -1,0 +1,65 @@
+<div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Добавить новую категорию</h4>
+      </div>
+      <form method="post" action="/category/">
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="recipient-name" class="control-label">Название:</label>
+              <input type="text" name='title' class="form-control" id="category-name">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
+          <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteCategoryModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Удалить категорию</h4>
+      </div>
+      <div class="modal-body">
+        <h5>Вы действительно хотите ее удалить?</h5>
+        <input type="hidden" id="delete_category_id"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
+        <button type="button" id="deleteCategoryBtn" class="btn btn-primary">Удалить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $('.delete-btn').on('click', function(event) {
+    var id = $(event.target).parent('a').get(0).id.split('_')[1];
+    var deleteModal = $('#delete_category_id');
+    deleteModal.value = id;
+    $('#deleteCategoryModal').modal('show');
+  })
+  $('#deleteCategoryModal').on('show.bs.modal', function (event) {
+       var modal = $(this)
+         modal.focus();
+    //modal.find('.modal-body input').val(category_id)
+  })
+  $('#deleteCategoryBtn').click(function(event) {
+    var category_id = $('#delete_category_id').value;
+    $.ajax({
+      url: '/category/' + category_id,
+      type: 'DELETE',
+      success: function(result) {
+       $('#category_' + category_id).parent().remove();
+      }
+    });
+  })
+</script>

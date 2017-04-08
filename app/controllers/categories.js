@@ -58,15 +58,24 @@ router.post('/', function(req, res, next) {
   if (!req.session.user) return res.redirect('/')
   category_api.createCategory(req.body, req.session.user.id)
     .then(function(result){
-      console.log("Category created")
-      return res.status(200).send("OK")
+      console.log(result)
+      return res.redirect("/category/" + result._id)
     })
     .catch(function(err){
-      res.status(500).send("Error")
+      return next(err)
     })
 });
 
-/*
-router.delete('/', function(req, res, next) {
+
+router.delete('/:id', function(req, res, next) {
+  if (!req.session.user) return res.redirect('/')
+  category_api.deleteCategory(req.params.id, req.session.user.id)
+    .then(function(result){
+      console.log(result)
+      return res.status(200).send("OK")
+    })
+    .catch(function(err){
+      return next(err)
+    })
 });
-*/
+
