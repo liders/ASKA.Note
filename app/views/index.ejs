@@ -11,6 +11,23 @@
   				<% }); %>
 			</ul>
 		<% } %>
+		
+		<% if (notes) { %>
+			<ul>
+  				<% notes.forEach(function(note){ %>
+    				<li><%= note.title %></li>
+  				<% }); %>
+			</ul>
+		<% } %>
+		
+		<h2>Создать заметку<h2>
+		<form method='post', action='/note'>
+			<input type='text', name='title'/>
+			<input type='text', name='description'/>
+			<input type='text', name='description', value=categories[0]/>
+			<input type='submit', value='Создать'/>
+		</form>
+
 	<% } else { %>
 		<h1>Регистрация</h1>
 		<form method='post', action='/users'>
