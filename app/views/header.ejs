@@ -9,8 +9,8 @@
 
   <title>Dashboard Template for Bootstrap</title>
   <!-- Bootstrap core CSS -->
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/index.css" rel="stylesheet">
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/index.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <style>
       .navbar-scrollable {
@@ -63,10 +63,10 @@
         <li><a href="http://upyachka.ru/">О проекте</a></li>
       </ul>
       <!-- Список ссылок, расположенный справа -->
-      <% if (user) { %>
+      <% if (typeof user != 'unifined' && user) { %>
           <form action="/users/logout/" method="post">
             <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" onclick="$.post('/users/logout/')">Выйти из системы</a></li>
+            <li><a href="/" onclick="$.post('/users/logout/')">Выйти из системы</a></li>
             </ul>
           </form>
       <% } else { %>

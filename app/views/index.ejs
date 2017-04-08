@@ -28,10 +28,11 @@
 	<%# } %>
 <%# include footer %>-->
 
-<% include header %>
+<%- include header %>
   <% if (user) { %>
-    HELLO, YOBA
+    <%- include categories %>
+    <%- include notes %>
 <% } else { %>
-  <%include checkin%>
+  <%- include checkin%>
 <% } %>
-<% include footer %>
+<%- include footer %>
