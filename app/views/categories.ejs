@@ -11,10 +11,10 @@
   <% if (categories) { %>
     <ul class="nav navbar-text navbar-overflow navbar-scrollable">
       <% categories.forEach(function(category){ %>
-      <li class="nav-item avtohover-delete">
+      <li class="nav-item  avtohover-delete">
         <a class="nav-link" id="category_<%=category.id%>" href="/category/<%= category.id %>"><%= category.title %></a>
-        <button type="button"
-                class="btn pull-right glyphicon glyphicon-remove btn-xs delete-btn"></button>
+          <button type="button" style="display: none;"
+                  class="btn pull-right glyphicon glyphicon-remove btn-xs delete-btn"></button>
       </li>
       <% }); %>
     </ul>

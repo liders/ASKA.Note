@@ -39,12 +39,21 @@
   </div>
 </div>
 
-
 <script>
+  $(".avtohover-delete").hover(function(){
+    var button = $(this).children('button');
+    console.log(button)
+    button.show();
+    button.css("margin-top", "-30px")
+  },
+  function(){
+    var button = $(this).children('button');
+    button.hide();
+  });
   $('.delete-btn').on('click', function(event) {
-    var id = $(event.target).parent('a').get(0).id.split('_')[1];
+    var id = $(event.target).siblings('a').get(0).id.split('_')[1];
     var deleteModal = $('#delete_category_id');
-    deleteModal.value = id;
+    deleteModal.val(id);
     $('#deleteCategoryModal').modal('show');
   })
   $('#deleteCategoryModal').on('show.bs.modal', function (event) {
@@ -53,12 +62,20 @@
     //modal.find('.modal-body input').val(category_id)
   })
   $('#deleteCategoryBtn').click(function(event) {
-    var category_id = $('#delete_category_id').value;
+    var category_id = $('#delete_category_id').val();
     $.ajax({
       url: '/category/' + category_id,
       type: 'DELETE',
       success: function(result) {
        $('#category_' + category_id).parent().remove();
+        $('#deleteCategoryModal').modal('hide');
+      },
+      error: function(result) {
+        console.log(result);
+//        $('#deleteCategoryModal').children('modal-body')
+//        <div class="alert alert-danger" role="alert">
+//          <strong>Oh snap!</strong> Change a few things up and try submitting again.
+//        </div>
       }
     });
   })

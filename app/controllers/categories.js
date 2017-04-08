@@ -69,12 +69,24 @@ router.post('/', function(req, res, next) {
 
 router.delete('/:id', function(req, res, next) {
   if (!req.session.user) return res.redirect('/')
+  console.log('kek111')
+  var node_lst = note_api.getNotesByCategory(req.session.user.id,req.params.id);
+  console.log(node_lst);
+  node_lst.then(function(node) {
+      console.log(node)
+      note_api.deleteNode(node.user_id, node._id)
+    }).catch(function(err){
+      console.log(err)
+      return next(err)
+  });
+
   category_api.deleteCategory(req.params.id, req.session.user.id)
     .then(function(result){
       console.log(result)
       return res.status(200).send("OK")
     })
     .catch(function(err){
+      console.log(err)
       return next(err)
     })
 });

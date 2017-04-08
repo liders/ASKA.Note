@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
   crypto = require('crypto')
   Category = mongoose.model('Category');
-
+  note_api = require('../utils/note.js');
 
 exports.createCategory = function(categoryData, userId){
  	var category = {

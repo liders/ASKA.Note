@@ -15,10 +15,16 @@ exports.createNote = function(noteData, userId){
 
 exports.getNotesByCategory = function(userId, categoryId) {
   return Note.find({
-    "user_id": userId, 
+    "user_id": userId,
     "category_id": categoryId});
-};
+}
 
 exports.getNote = function(userId, noteId) {
-  return Note.findOne({"_id": noteId});
+  return Note.findOne({
+    "_id": noteId,
+    "user_id": userId});
+}
+
+exports.deleteNode = function(userId, nodeId) {
+  return Note.remove({"_id": nodeId, "user_id": userId});
 };
