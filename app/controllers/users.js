@@ -15,8 +15,8 @@ router.post('/login', function(req, res, next) {
       if(user){
         console.log('USE LOGIN!!!!!!!!')
         req.session.user = {id: user._id, login: user.login}
-        res.redirect('/')
-        } else {
+        res.redirect('/');
+      } else {
           return next(error)
       }
     })

@@ -1,11 +1,15 @@
 var express = require('express'),
   router = express.Router(),
+  update_router = express.Router(),
+  create_router = express.Router(),
   mongoose = require('mongoose'),
-  category_api = require('../utils/category.js'),
-  note_api = require('../utils/note.js');
+  note_api = require('../utils/note.js'),
+  category_api = require('../utils/category.js');
 
 module.exports = function (app) {
   app.use('/note', router);
+  app.use('/update_note', update_router);
+  app.use('/create_note', create_router);
 };
 
 
@@ -68,6 +72,7 @@ router.post('/', function(req, res, next) {
       res.status(500).send("Error")
     })
 });
+
 
 /*
 router.delete('/', function(req, res, next) {
