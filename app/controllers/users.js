@@ -34,7 +34,7 @@ router.post('/', function(req, res, next) {
     })
     .catch(function(err){
       if (err.toJSON().code == 11000){
-        res.status(500).send("This login already exist")
+        next(new Error("This login already exist"))
       }
     })
 });
@@ -48,6 +48,6 @@ router.post('/logout', function(req, res, next) {
     }
   }
   catch(err) {
-    return error_process(res, error)
+    return next(err)
   }
 });
