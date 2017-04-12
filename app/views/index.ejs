@@ -30,12 +30,20 @@
 
 <%- include header %>
   <% if (user) { %>
-  <div class="container top-buffer">
-    <div class="row">
-      <%- include categories %>
-      <%- include notes_list %>
+    <div class="container top-buffer">
+      <div class="row">
+    <% if (categories.length == 0) {%>
+        <div class="jumbotron">
+          <h1>Приветствуем Вас!</h1>
+          <p class="lead">Сейчас у Вас нет личных категорий. Вы можете создать новую и начать работать с заметками!</p>
+          <p><a class="btn btn-lg btn-success" href="#" role="button" data-toggle="modal" data-target="#addCategoryModal">Добавить категорию</a></p>
+        </div>
+    <%} else {%>
+          <%- include categories %>
+          <%- include notes_list %>
+    <%};%>
+      </div>
     </div>
-  </div>
 <% } else { %>
   <% include checkin%>
 <% } %>

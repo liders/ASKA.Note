@@ -20,6 +20,9 @@ router.get('/', function(req, res, next) {
     data.user = req.session.user
     category_api.getCategories(req.session.user.id)
       .then(function(categories){
+        if (!categories.map(category => category.id).some(category => category == req.params.id)){
+          res.render('index', data);
+        }
         if(categories){
           console.log(categories[0]._id)
           console.log(categories[0])
