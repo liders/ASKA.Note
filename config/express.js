@@ -45,7 +45,8 @@ module.exports = function(app, config) {
         message: err.message,
         error: err,
         title: 'error',
-        user: req.session.user
+        user: req.session.user,
+        current_category_id: req.session.current_category_id
       });
     });
   }

@@ -37,7 +37,12 @@ router.get('/:id', function(req, res, next){
   };
   category_api.getCategories(req.session.user.id)
       .then(function(categories){
+        console.log("KIKKKER");
+        console.log(categories.map(category => category.id));
         if(categories){
+          if (!categories.map(category => category.id).some(category => category == req.params.id)){
+            throw Error("Category: " + req.params.id + " not found");
+          }
           data.categories = categories
           note_api.getNotesByCategory(req.session.user.id, req.params.id)
             .then(function(notes){
@@ -51,7 +56,11 @@ router.get('/:id', function(req, res, next){
               return next(error)
             })
         };
-      })
+      }).catch(function(error){
+          console.log(error.message)
+          console.log("========================ERROR============================");
+          return next(error)
+      });
 });
 
 router.post('/', function(req, res, next) {

@@ -1,3 +1,4 @@
+<% if (current_category_id != undefined && (current_category_id)) {%>
 <div class="modal fade" id="addNoteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -10,7 +11,7 @@
             <div class="form-group">
               <label for="recipient-name" class="control-label">Название:</label>
               <input type="text" name='title' class="form-control" id="note-name">
-              <input type="hidden" name='category_id' class="form-control" id="note-category-id" value="<%- current_category_id %>"></input>
+              <input type="hidden" name='category_id' class="form-control" id="note-category-id" value="<%- current_category_id %>"/>
             </div>
         </div>
         <div class="modal-footer">
@@ -21,3 +22,4 @@
     </div>
   </div>
 </div>
+<% } %>

@@ -81,7 +81,7 @@
     });
   })
   $(document).ready( function() {
-    var activeElement = $('#category_<%=(current_category_id)%>');
+    var activeElement = $('#category_<%-(current_category_id)%>');
 
     if(activeElement.length)
       activeElement.parent().addClass('disabled');
