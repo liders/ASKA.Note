@@ -1,0 +1,43 @@
+
+<% include header %>
+  <% if (user) { %>
+
+  <div class="container top-buffer">
+    <div class="row">
+      <%- include categories %>
+       
+        <main class="col-sm-9 offset-sm-3 col-md-9 offset-md-2 pt-3">
+		<div class="row">
+				<div class="col-sm-10">
+					<p class="header">Число найденных заметок: <%= notes.length %></p>
+				</div>
+		</div>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Название</th>
+                  <!--<th>Тэги</th>-->
+				  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              	<% if(notes && notes.length > 0) {%>
+        			<% notes.forEach(function(note){ %>
+          			<tr>
+          			<td>
+            			<a class="nav-link" href="/note/<%= note.id %>"><%= note.title %></a>
+          			</td>
+        			<% }) %>
+      			<% } %>
+              </tbody>
+            </table>
+          </div>
+
+
+    </div>
+  </div>
+<% } else { %>
+  <% include checkin%>
+<% } %>
+<%- include footer %>

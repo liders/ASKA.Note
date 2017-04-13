@@ -139,6 +139,36 @@ router.post('/:id', function(req, res, next) {
       console.log("TEST----1")
       return next(error);
     })
-
 });
 
+router.post('/search', function(req, res, next){
+  if (!req.session.user) return res.redirect('/')
+  var data = {
+    title: 'ASKA Notes',
+    user : req.session.user,
+    categories: [],
+    notes: [],
+    current_category_id: null,
+    subtext: null
+  };
+  category_api.getCategories(req.session.user.id)
+      .then(function(categories){
+        if(categories){
+          data.categories = categories
+          console.log(req.params.id)
+          note_api.getSearchNote(req.session.user.id, req.body.search_query)
+            .then(function(result){
+              data.notes = result
+              res.render('search_result', data);
+            })
+            .catch(function(err){
+              return next(error)
+            })
+        };
+      })
+});
+
+/*
+router.delete('/', function(req, res, next) {
+});
+*/

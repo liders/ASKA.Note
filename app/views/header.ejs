@@ -65,9 +65,9 @@
           </form>
         <ul class="nav navbar-nav navbar-right"> <!-- ALKI. Поисковая форма -->
           <li>
-            <form class="navbar-form navbar-left" action="search" role="search" method="get">
+            <form class="navbar-form navbar-left" action="/note/search" role="search" method="post">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" name= "search_query" class="form-control" placeholder="Поиск">
               </div>
               <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
             </form>
@@ -86,3 +86,7 @@
         <% } %>
     </div>
   </nav>
+<% if (user) {%>
+    <% include categories_modal %>
+    <% include notes_modal %>
+  <% } %>
