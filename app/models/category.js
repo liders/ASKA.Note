@@ -4,7 +4,6 @@ var mongoose = require('mongoose'),
 var CategorySchema = new Schema({
   title: {
   	type: String,
-  	unique: true,
   	require: true
   },
   user_id: {
@@ -13,4 +12,5 @@ var CategorySchema = new Schema({
   }
 });
 
+CategorySchema.index({title: 1, user_id: 1}, {unique: true});
 mongoose.model('Category', CategorySchema);
