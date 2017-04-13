@@ -13,29 +13,22 @@ router.get('/', function(req, res, next) {
     title: 'ASKA Notes',
     user : null,
     categories: [],
-    current_category_id: null
+    current_category_id: null,
+    notes: []
   }
   if (req.session.user) {
-    console.log('KEK1111111')
     data.user = req.session.user
     category_api.getCategories(req.session.user.id)
       .then(function(categories){
-        if (!categories.map(category => category.id).some(category => category == req.params.id)){
-          res.render('index', data);
+        if(categories && categories.length > 0){
+          res.redirect('/category/' + categories[0]._id);
         }
-        if(categories){
-          console.log(categories[0]._id)
-          console.log(categories[0])
-          data.categories = categories[0]._id;
-          data.current_category_id = categories[0]._id
-          console.log(data.categories)
-          res.redirect('/category/' + data.categories);
-          res.end();
+        else{
+          res.render('index', data);
         }
       })
   }
   else {
-    console.log('KEK1112111')
     res.render('index', data);
   }
   //else if (!data.categories) {

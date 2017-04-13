@@ -8,7 +8,7 @@
       <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#addCategoryModal"><span class="glyphicon glyphicon-plus"/>Добавить</button>
     </div>
   </div>
-  <% if (categories) { %>
+  <% if (categories && categories.length > 0) { %>
     <ul class="nav navbar-text navbar-overflow navbar-scrollable">
       <% categories.forEach(function(category){ %>
       <li class="nav-item avtohover-delete">

@@ -16,7 +16,7 @@ exports.createNote = function(noteData, userId){
 exports.getNotesByCategory = function(userId, categoryId) {
   return Note.find({
     "user_id": userId,
-    "category_id": categoryId});
+    "category_id": categoryId}).sort({"created": -1});
 }
 
 exports.deleteNode = function(userId, nodeId) {
