@@ -26,3 +26,8 @@ exports.deleteNode = function(userId, nodeId) {
 exports.getNote = function(noteId) {
   return Note.find({"_id": noteId});
 };
+
+exports.updateNote = function(userId, noteId, dataBody) {
+  return Note.update({"_id": noteId, "user_id": userId},
+    {"$set": {"description": dataBody.description, "title": dataBody.title}}, {"upsert": true});
+};

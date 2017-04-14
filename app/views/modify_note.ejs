@@ -1,0 +1,45 @@
+<% include header %>
+<% if (user) { %>
+
+<div class="container top-buffer">
+  <div class="row">
+    <%- include categories %>
+    <% if ((notes) && notes.length > 0){ %>
+      <main class="col-sm-9 offset-sm-3 col-md-9 offset-md-2 pt-3">
+        <form id="update_note_form" method="post" action="/note/<%= notes[0].id %>">
+        <div class="container-fluid row">
+          <div class="col-sm-4">
+            <p class="header">Название заметки:</p>
+          </div>
+          <div class="col-sm-4">
+            <input name="title" class="form-control" id="node_title" value="<%= notes[0].title %>"/>
+          </div>
+        </div>
+        <div class="row full-height">
+          <div class="col-xs-12 full-height">
+              <div class="demo-control"><a id="preview_note" href="#" class="source-clear">посмотреть</a>
+                <a  href="#" onclick="$('#update_note_form').get(0).submit()"><strong>применить</strong></a>
+              </div>
+                <textarea name="description" id="raw_text" class="source full-height" rows="15">
+                </textarea>
+          </div>
+        </div>
+        </form>
+          <section class="col-xs-12 full-height">
+            <div class="result-html full-height"><hr>
+              <div id="preview_result">
+                <%- notes[0].processed_description %>
+              </div>
+              <pre class="hljs result-src full-height"><code class="result-src-content full-height"></code></pre>
+              <pre class="hljs result-debug full-height"><code class="result-debug-content full-height"></code></pre>
+            </div>
+          </section>
+      </main>
+    <% } %>
+
+  </div>
+</div>
+<% } else { %>
+<% include checkin%>
+<% } %>
+<%- include footer %>

@@ -1,4 +1,4 @@
-<% if (current_category_id != undefined && (current_category_id)) {%>
+<% if ((current_category_id) && (current_category_id != undefined)) {%>
 <div class="modal fade" id="addNoteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -22,4 +22,39 @@
     </div>
   </div>
 </div>
+<% } %>
+<% if ((notes) && notes.length > 0) {%>
+<script>
+  $("#preview_note").click(function(event) {
+    var raw_text = Base64.encode($("#raw_text").val());
+    raw_text = encodeURIComponent(raw_text);
+    $.ajax({
+      url: '/markdown/' + raw_text,
+      type: 'GET',
+      data: raw_text,
+      success: function(result) {
+        result = Base64.decode(result);
+        console.log(result);
+        var res = $("#preview_result")
+        res.empty();
+        res.append(result);
+
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log(jqXHR);
+        console.log(textStatus);
+        console.log(errorThrown);
+      }
+    });
+  })
+
+  $(document).ready(function() {
+    $('#raw_text').val(Base64.decode(nodeEditDefaultValue()));
+  });
+
+  function nodeEditDefaultValue() {
+    console.log('TST')
+    return "<%= (notes[0].encoded_description) %>";
+  }
+</script>
 <% } %>
