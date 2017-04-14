@@ -13,7 +13,6 @@ router.post('/login', function(req, res, next) {
   user_api.checkUser(req.body)
     .then(function(user){
       if(user){
-        console.log('USE LOGIN!!!!!!!!')
         req.session.user = {id: user._id, login: user.login}
         res.redirect('/');
       } else {

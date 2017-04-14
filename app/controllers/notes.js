@@ -155,7 +155,6 @@ router.post('/search', function(req, res, next){
       .then(function(categories){
         if(categories){
           data.categories = categories
-          console.log(req.params.id)
           note_api.getSearchNote(req.session.user.id, req.body.search_query)
             .then(function(result){
               data.notes = result
@@ -168,7 +167,17 @@ router.post('/search', function(req, res, next){
       })
 });
 
-/*
-router.delete('/', function(req, res, next) {
+
+router.delete('/:id', function(req, res, next) {
+  if (!req.session.user) return res.redirect('/')
+  note_api.deleteNote(req.session.user.id, req.params.id)
+    .then(function(result){
+      console.log(result)
+      return res.status(200).send("OK")
+    })
+    .catch(function(err){
+      console.log(err)
+      return next(err)
+    })
 });
-*/
+

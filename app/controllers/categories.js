@@ -77,11 +77,9 @@ router.post('/', function(req, res, next) {
 router.delete('/:id', function(req, res, next) {
   if (!req.session.user) return res.redirect('/')
   console.log('kek111')
-  var node_lst = note_api.getNotesByCategory(req.session.user.id,req.params.id);
-  console.log(node_lst);
-  node_lst.then(function(node) {
-      console.log(node)
-      note_api.deleteNode(node.user_id, node._id)
+  note_api.deleteNotesByCategory(req.session.user.id, req.params.id)
+  .then(function(result) {
+      
     }).catch(function(err){
       console.log(err)
       return next(err)

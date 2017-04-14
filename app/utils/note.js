@@ -19,8 +19,12 @@ exports.getNotesByCategory = function(userId, categoryId) {
     "category_id": categoryId}).sort({"created": -1});
 }
 
-exports.deleteNode = function(userId, nodeId) {
-  return Note.remove({"_id": nodeId, "user_id": userId});
+exports.deleteNote = function(userId, noteId) {
+  return Note.remove({"_id": noteId, "user_id": userId});
+};
+
+exports.deleteNotesByCategory = function(userId, categoryId) {
+  return Note.remove({"category_id": categoryId, "user_id": userId});
 };
 
 exports.getNote = function(noteId) {
